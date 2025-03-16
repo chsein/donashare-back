@@ -14,6 +14,9 @@ import { AwsS3Module } from './aws/aws-s3.module';
     TypeOrmModule.forRoot(TypeOrmConfig),
     ConfigModule.forRoot({
       isGlobal: true,
+      envFilePath: process.env.NODE_ENV
+        ? `.env.${process.env.NODE_ENV}`
+        : '.env',
     }),
     AwsS3Module,
     CardsModule,
