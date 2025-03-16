@@ -4,6 +4,7 @@ import { Card } from './card.entity';
 import { CreateCardDto } from './dto/createCard.dto';
 import { create } from 'domain';
 import { GetAllCardDto } from './dto/getAllCards.dto';
+import { GetPresignedUrlDto } from './dto/getPresignedUrl.dto';
 
 @Controller('cards')
 export class CardsController {
@@ -18,5 +19,12 @@ export class CardsController {
   @Post('/post')
   createCard(@Body() createCardDto: CreateCardDto): Promise<CreateCardDto> {
     return this.cardsService.createCard(createCardDto);
+  }
+
+  @Post('/get-presigned-url')
+  async getPresignedUrl(@Body() body: GetPresignedUrlDto): Promise<string> {
+    const signedUrl = await this.cardsService.getPresignedUrl(body);
+
+    return signedUrl;
   }
 }
