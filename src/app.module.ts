@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CardsModule } from './cards/cards.module';
-import { typeORMConfig } from './config/typeorm.config';
+import { TypeOrmConfig } from './config/typeorm.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UploadImgModule } from './upload-img/upload-img.module';
 import { join } from 'path';
@@ -10,7 +10,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(typeORMConfig),
+    TypeOrmModule.forRoot(TypeOrmConfig),
     CardsModule,
     UploadImgModule,
     ServeStaticModule.forRoot({
